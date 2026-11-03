@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="simple_balance_sheet_wizard_view_form" model="ir.ui.view">
+        <field name="name">simple.balance.sheet.wizard.form</field>
+        <field name="model">simple.balance.sheet.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Balance Sheet">
+                <group>
+                    <field name="date"/>
+                </group>
+                <button name="action_generate" string="Generate" type="object" class="oe_highlight"/>
+                <field name="line_ids" invisible="not line_ids">
+                    <list decoration-bf="section == 'asset'">
+                        <field name="section"/>
+                        <field name="name"/>
+                        <field name="amount"/>
+                    </list>
+                </field>
+                <group class="oe_subtotal_footer" invisible="not line_ids">
+                    <field name="total_assets"/>
+                    <field name="total_liabilities"/>
+                    <field name="total_equity"/>
+                    <field name="balance_check" class="oe_subtotal_footer_separator"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="simple_balance_sheet_wizard_action" model="ir.actions.act_window">
+        <field name="name">Balance Sheet</field>
+        <field name="res_model">simple.balance.sheet.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="sequence_simple_invoice_customer" model="ir.sequence">
+        <field name="name">Simple Accounting: Customer Invoice</field>
+        <field name="code">simple.invoice.customer</field>
+        <field name="prefix">INV/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="sequence_simple_invoice_vendor" model="ir.sequence">
+        <field name="name">Simple Accounting: Vendor Bill</field>
+        <field name="code">simple.invoice.vendor</field>
+        <field name="prefix">BILL/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- Default short chart of accounts -->
+    <record id="account_cash" model="simple.account">
+        <field name="code">101</field>
+        <field name="name">Cash</field>
+        <field name="account_type">asset</field>
+        <field name="is_cash_bank" eval="True"/>
+    </record>
+    <record id="account_bank" model="simple.account">
+        <field name="code">102</field>
+        <field name="name">Bank</field>
+        <field name="account_type">asset</field>
+        <field name="is_cash_bank" eval="True"/>
+    </record>
+    <record id="account_owners_equity" model="simple.account">
+        <field name="code">301</field>
+        <field name="name">Owner's Equity</field>
+        <field name="account_type">equity</field>
+    </record>
+    <record id="account_sales_revenue" model="simple.account">
+        <field name="code">401</field>
+        <field name="name">Sales Revenue</field>
+        <field name="account_type">income</field>
+    </record>
+    <record id="account_other_income" model="simple.account">
+        <field name="code">402</field>
+        <field name="name">Other Income</field>
+        <field name="account_type">income</field>
+    </record>
+    <record id="account_cogs" model="simple.account">
+        <field name="code">501</field>
+        <field name="name">Cost of Goods Sold</field>
+        <field name="account_type">expense</field>
+    </record>
+    <record id="account_operating_expenses" model="simple.account">
+        <field name="code">502</field>
+        <field name="name">Operating Expenses</field>
+        <field name="account_type">expense</field>
+    </record>
+    <record id="account_rent_expense" model="simple.account">
+        <field name="code">503</field>
+        <field name="name">Rent</field>
+        <field name="account_type">expense</field>
+    </record>
+    <record id="account_salaries_expense" model="simple.account">
+        <field name="code">504</field>
+        <field name="name">Salaries</field>
+        <field name="account_type">expense</field>
+    </record>
+    <record id="account_loans_payable" model="simple.account">
+        <field name="code">201</field>
+        <field name="name">Loans Payable</field>
+        <field name="account_type">liability</field>
+    </record>
+
+    <!-- Default taxes -->
+    <record id="tax_sale_0" model="simple.tax">
+        <field name="name">No Tax (Sales)</field>
+        <field name="amount">0.0</field>
+        <field name="type_tax_use">sale</field>
+    </record>
+    <record id="tax_sale_12" model="simple.tax">
+        <field name="name">VAT 12% (Sales)</field>
+        <field name="amount">12.0</field>
+        <field name="type_tax_use">sale</field>
+    </record>
+    <record id="tax_purchase_0" model="simple.tax">
+        <field name="name">No Tax (Purchases)</field>
+        <field name="amount">0.0</field>
+        <field name="type_tax_use">purchase</field>
+    </record>
+    <record id="tax_purchase_12" model="simple.tax">
+        <field name="name">VAT 12% (Purchases)</field>
+        <field name="amount">12.0</field>
+        <field name="type_tax_use">purchase</field>
+    </record>
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="simple_tax_report_wizard_view_form" model="ir.ui.view">
+        <field name="name">simple.tax.report.wizard.form</field>
+        <field name="model">simple.tax.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Tax Report">
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <button name="action_generate" string="Generate" type="object" class="oe_highlight"/>
+                <field name="line_ids" invisible="not line_ids">
+                    <list>
+                        <field name="tax_id"/>
+                        <field name="type_tax_use"/>
+                        <field name="base_amount"/>
+                        <field name="tax_amount"/>
+                    </list>
+                </field>
+                <group class="oe_subtotal_footer" invisible="not line_ids">
+                    <field name="total_tax_collected"/>
+                    <field name="total_tax_paid"/>
+                    <field name="net_tax_due" class="oe_subtotal_footer_separator"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="simple_tax_report_wizard_action" model="ir.actions.act_window">
+        <field name="name">Tax Report</field>
+        <field name="res_model">simple.tax.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_simple_account_user,simple.account.user,model_simple_account,group_simple_accounting_user,1,0,0,0
+access_simple_account_manager,simple.account.manager,model_simple_account,group_simple_accounting_manager,1,1,1,1
+access_simple_tax_user,simple.tax.user,model_simple_tax,group_simple_accounting_user,1,0,0,0
+access_simple_tax_manager,simple.tax.manager,model_simple_tax,group_simple_accounting_manager,1,1,1,1
+access_simple_transaction_user,simple.transaction.user,model_simple_transaction,group_simple_accounting_user,1,1,1,1
+access_simple_invoice_user,simple.invoice.user,model_simple_invoice,group_simple_accounting_user,1,1,1,1
+access_simple_invoice_line_user,simple.invoice.line.user,model_simple_invoice_line,group_simple_accounting_user,1,1,1,1
+access_simple_payment_user,simple.payment.user,model_simple_payment,group_simple_accounting_user,1,1,1,1
+access_simple_profit_loss_wizard_user,simple.profit.loss.wizard.user,model_simple_profit_loss_wizard,group_simple_accounting_user,1,1,1,1
+access_simple_profit_loss_wizard_line_user,simple.profit.loss.wizard.line.user,model_simple_profit_loss_wizard_line,group_simple_accounting_user,1,1,1,1
+access_simple_balance_sheet_wizard_user,simple.balance.sheet.wizard.user,model_simple_balance_sheet_wizard,group_simple_accounting_user,1,1,1,1
+access_simple_balance_sheet_wizard_line_user,simple.balance.sheet.wizard.line.user,model_simple_balance_sheet_wizard_line,group_simple_accounting_user,1,1,1,1
+access_simple_tax_report_wizard_user,simple.tax.report.wizard.user,model_simple_tax_report_wizard,group_simple_accounting_user,1,1,1,1
+access_simple_tax_report_wizard_line_user,simple.tax.report.wizard.line.user,model_simple_tax_report_wizard_line,group_simple_accounting_user,1,1,1,1

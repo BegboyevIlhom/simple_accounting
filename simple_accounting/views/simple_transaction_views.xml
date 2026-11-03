@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="simple_transaction_view_list" model="ir.ui.view">
+        <field name="name">simple.transaction.list</field>
+        <field name="model">simple.transaction</field>
+        <field name="arch" type="xml">
+            <list decoration-success="transaction_type == 'income'" decoration-danger="transaction_type == 'expense'">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="transaction_type"/>
+                <field name="cash_account_id"/>
+                <field name="destination_account_id" optional="hide"/>
+                <field name="category_id"/>
+                <field name="partner_id" optional="show"/>
+                <field name="amount" sum="Total"/>
+                <field name="amount_tax" optional="hide"/>
+                <field name="amount_total"/>
+                <field name="state" widget="badge" decoration-success="state == 'posted'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="simple_transaction_view_form" model="ir.ui.view">
+        <field name="name">simple.transaction.form</field>
+        <field name="model">simple.transaction</field>
+        <field name="arch" type="xml">
+            <form string="Ledger Entry">
+                <header>
+                    <button name="action_post" string="Post" type="object" class="oe_highlight" invisible="state == 'posted'"/>
+                    <button name="action_draft" string="Reset to Draft" type="object" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="transaction_type"/>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="cash_account_id" string="To Account" invisible="transaction_type != 'income'"/>
+                            <field name="cash_account_id" string="From Account" invisible="transaction_type != 'expense'"/>
+                            <field name="cash_account_id" string="From Account" invisible="transaction_type != 'transfer'"/>
+                            <field name="destination_account_id" string="To Account" invisible="transaction_type != 'transfer'" required="transaction_type == 'transfer'"/>
+                            <field name="category_id" invisible="transaction_type == 'transfer'" required="transaction_type != 'transfer'"/>
+                            <field name="amount"/>
+                            <field name="tax_id"/>
+                            <field name="amount_tax" invisible="not tax_id"/>
+                            <field name="amount_total"/>
+                            <field name="invoice_id" invisible="not invoice_id"/>
+                            <field name="payment_id" invisible="not payment_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="simple_transaction_view_search" model="ir.ui.view">
+        <field name="name">simple.transaction.search</field>
+        <field name="model">simple.transaction</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="category_id"/>
+                <field name="cash_account_id"/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="posted" string="Posted" domain="[('state', '=', 'posted')]"/>
+                <separator/>
+                <filter name="income" string="Income" domain="[('transaction_type', '=', 'income')]"/>
+                <filter name="expense" string="Expense" domain="[('transaction_type', '=', 'expense')]"/>
+                <filter name="transfer" string="Transfer" domain="[('transaction_type', '=', 'transfer')]"/>
+                <group>
+                    <filter name="group_category" string="Category" context="{'group_by': 'category_id'}"/>
+                    <filter name="group_account" string="Account" context="{'group_by': 'cash_account_id'}"/>
+                    <filter name="group_month" string="Month" context="{'group_by': 'date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="simple_transaction_action" model="ir.actions.act_window">
+        <field name="name">Ledger Entries</field>
+        <field name="res_model">simple.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_posted': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Record your first income, expense or transfer entry.
+            </p>
+        </field>
+    </record>
+</odoo>

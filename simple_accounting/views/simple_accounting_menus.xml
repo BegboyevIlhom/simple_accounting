@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_simple_accounting_root" name="Simple Accounting" sequence="30"
+        web_icon="simple_accounting,static/description/icon.png"/>
+
+    <menuitem id="menu_simple_accounting_ledger" name="Ledger" parent="menu_simple_accounting_root" sequence="10"/>
+    <menuitem id="menu_simple_transaction" name="Entries" parent="menu_simple_accounting_ledger"
+        action="simple_transaction_action" sequence="10"/>
+
+    <menuitem id="menu_simple_accounting_invoicing" name="Invoicing" parent="menu_simple_accounting_root" sequence="20"/>
+    <menuitem id="menu_simple_invoice_customer" name="Customer Invoices" parent="menu_simple_accounting_invoicing"
+        action="simple_invoice_customer_action" sequence="10"/>
+    <menuitem id="menu_simple_invoice_vendor" name="Vendor Bills" parent="menu_simple_accounting_invoicing"
+        action="simple_invoice_vendor_action" sequence="20"/>
+    <menuitem id="menu_simple_payment" name="Payments" parent="menu_simple_accounting_invoicing"
+        action="simple_payment_list_action" sequence="30"/>
+
+    <menuitem id="menu_simple_accounting_reporting" name="Reporting" parent="menu_simple_accounting_root" sequence="30"/>
+    <menuitem id="menu_simple_profit_loss" name="Profit &amp; Loss" parent="menu_simple_accounting_reporting"
+        action="simple_profit_loss_wizard_action" sequence="10"/>
+    <menuitem id="menu_simple_balance_sheet" name="Balance Sheet" parent="menu_simple_accounting_reporting"
+        action="simple_balance_sheet_wizard_action" sequence="20"/>
+    <menuitem id="menu_simple_tax_report" name="Tax Report" parent="menu_simple_accounting_reporting"
+        action="simple_tax_report_wizard_action" sequence="30"/>
+
+    <menuitem id="menu_simple_accounting_configuration" name="Configuration" parent="menu_simple_accounting_root" sequence="40"
+        groups="simple_accounting.group_simple_accounting_manager"/>
+    <menuitem id="menu_simple_account" name="Chart of Accounts" parent="menu_simple_accounting_configuration"
+        action="simple_account_action" sequence="10"/>
+    <menuitem id="menu_simple_tax" name="Taxes" parent="menu_simple_accounting_configuration"
+        action="simple_tax_action" sequence="20"/>
+</odoo>

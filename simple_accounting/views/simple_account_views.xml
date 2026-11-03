@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="simple_account_view_list" model="ir.ui.view">
+        <field name="name">simple.account.list</field>
+        <field name="model">simple.account</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="account_type"/>
+                <field name="is_cash_bank" optional="show"/>
+                <field name="opening_balance" optional="hide"/>
+                <field name="balance"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="simple_account_view_form" model="ir.ui.view">
+        <field name="name">simple.account.form</field>
+        <field name="model">simple.account</field>
+        <field name="arch" type="xml">
+            <form string="Account">
+                <sheet>
+                    <widget name="web_ribbon" text="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Cash register"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="code"/>
+                            <field name="account_type"/>
+                            <field name="is_cash_bank" invisible="account_type != 'asset'"/>
+                        </group>
+                        <group>
+                            <field name="opening_balance"/>
+                            <field name="balance" invisible="not is_cash_bank"/>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="simple_account_action" model="ir.actions.act_window">
+        <field name="name">Chart of Accounts</field>
+        <field name="res_model">simple.account</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first account (e.g. Cash, Bank, Sales Revenue, Operating Expenses).
+            </p>
+        </field>
+    </record>
+</odoo>

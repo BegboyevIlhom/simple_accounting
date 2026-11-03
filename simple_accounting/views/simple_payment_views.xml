@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="simple_payment_view_list" model="ir.ui.view">
+        <field name="name">simple.payment.list</field>
+        <field name="model">simple.payment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="date"/>
+                <field name="invoice_id"/>
+                <field name="partner_id"/>
+                <field name="cash_account_id"/>
+                <field name="category_id"/>
+                <field name="amount" sum="Total"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="simple_payment_view_form" model="ir.ui.view">
+        <field name="name">simple.payment.form</field>
+        <field name="model">simple.payment</field>
+        <field name="arch" type="xml">
+            <form string="Register Payment">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="invoice_id"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="cash_account_id"/>
+                            <field name="category_id"/>
+                            <field name="amount"/>
+                            <field name="memo"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="simple_payment_action" model="ir.actions.act_window">
+        <field name="name">Register Payment</field>
+        <field name="res_model">simple.payment</field>
+        <field name="view_mode">form,list</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="simple_payment_list_action" model="ir.actions.act_window">
+        <field name="name">Payments</field>
+        <field name="res_model">simple.payment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
