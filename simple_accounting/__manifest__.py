@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': 'Simple Accounting',
-    'version': '19.0.1.0.0',
+    'version': '20.0.1.0.0',
     'category': 'Accounting/Accounting',
     'sequence': 30,
     'summary': "Lightweight cash-basis bookkeeping: accounts, income/expense entries, invoices, payments and basic reports",
@@ -29,7 +29,6 @@ Features
     'depends': ['base'],
     'data': [
         'security/simple_accounting_security.xml',
-        'security/ir.model.access.csv',
         'data/simple_accounting_data.xml',
         'views/simple_account_views.xml',
         'views/simple_tax_views.xml',
@@ -40,6 +39,7 @@ Features
         'wizard/simple_balance_sheet_views.xml',
         'wizard/simple_tax_report_views.xml',
         'views/simple_accounting_menus.xml',
+        'security/ir.access.csv',
     ],
     'installable': True,
     'application': True,

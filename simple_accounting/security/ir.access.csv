@@ -1,0 +1,20 @@
+id,name,model_id,group_id/id,operation,domain
+access_simple_account_user,simple.account.user,simple.account,simple_accounting.group_simple_accounting_user,r,
+access_simple_account_manager,simple.account.manager,simple.account,simple_accounting.group_simple_accounting_manager,crud,
+ir_rule_simple_account_company,Simple Account: Multi Company,simple.account,,crud,"[('company_id', 'in', company_ids + [False])]"
+access_simple_tax_user,simple.tax.user,simple.tax,simple_accounting.group_simple_accounting_user,r,
+access_simple_tax_manager,simple.tax.manager,simple.tax,simple_accounting.group_simple_accounting_manager,crud,
+ir_rule_simple_tax_company,Simple Tax: Multi Company,simple.tax,,crud,"[('company_id', 'in', company_ids + [False])]"
+access_simple_transaction_user,simple.transaction.user,simple.transaction,simple_accounting.group_simple_accounting_user,crud,
+ir_rule_simple_transaction_company,Simple Transaction: Multi Company,simple.transaction,,crud,"[('company_id', 'in', company_ids + [False])]"
+access_simple_invoice_user,simple.invoice.user,simple.invoice,simple_accounting.group_simple_accounting_user,crud,
+ir_rule_simple_invoice_company,Simple Invoice: Multi Company,simple.invoice,,crud,"[('company_id', 'in', company_ids + [False])]"
+access_simple_invoice_line_user,simple.invoice.line.user,simple.invoice.line,simple_accounting.group_simple_accounting_user,crud,
+access_simple_payment_user,simple.payment.user,simple.payment,simple_accounting.group_simple_accounting_user,crud,
+ir_rule_simple_payment_company,Simple Payment: Multi Company,simple.payment,,crud,"[('company_id', 'in', company_ids + [False])]"
+access_simple_profit_loss_wizard_user,simple.profit.loss.wizard.user,simple.profit.loss.wizard,simple_accounting.group_simple_accounting_user,crud,
+access_simple_profit_loss_wizard_line_user,simple.profit.loss.wizard.line.user,simple.profit.loss.wizard.line,simple_accounting.group_simple_accounting_user,crud,
+access_simple_balance_sheet_wizard_user,simple.balance.sheet.wizard.user,simple.balance.sheet.wizard,simple_accounting.group_simple_accounting_user,crud,
+access_simple_balance_sheet_wizard_line_user,simple.balance.sheet.wizard.line.user,simple.balance.sheet.wizard.line,simple_accounting.group_simple_accounting_user,crud,
+access_simple_tax_report_wizard_user,simple.tax.report.wizard.user,simple.tax.report.wizard,simple_accounting.group_simple_accounting_user,crud,
+access_simple_tax_report_wizard_line_user,simple.tax.report.wizard.line.user,simple.tax.report.wizard.line,simple_accounting.group_simple_accounting_user,crud,
