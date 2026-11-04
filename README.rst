@@ -10,7 +10,8 @@ Branches
 This repository follows the Odoo convention of one branch per supported
 Odoo series:
 
-* ``19.0`` — Odoo 19.0 (current)
+* ``19.0`` — Odoo 19.0 (this branch)
+* ``20.0`` — Odoo 20.0
 
 Each branch's root contains the module folder (``simple_accounting/``),
 ready to be placed under an ``addons_path`` directory.
